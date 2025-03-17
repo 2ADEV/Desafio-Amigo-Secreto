@@ -1,4 +1,5 @@
 Challenge-Amigo-Secreto 🎉
+
 Este é um projeto simples para sortear amigos secretos. Ele permite adicionar nomes de amigos à lista e, em seguida, sortear um nome aleatório da lista. Após o sorteio, a lista é limpa para um novo ciclo.
 
 
