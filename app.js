@@ -30,7 +30,11 @@ function adicionarAmigo(){
 }
 //Atualizando lista de amigos
 function atualizarLista(){
+<<<<<<< HEAD
     let lista = document.getElementById("listaDeAmigos");
+=======
+    let lista = document.getElementById("lista");
+>>>>>>> 5ff1ccd9cd54d7859a0beff68015678863594b2c
     lista.innerHTML = "";
     for(let i = 0; i < listaDeAmigos.length; i++){
         lista.innerHTML += "<li>" + listaDeAmigos[i] + "</li>";
