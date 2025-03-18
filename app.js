@@ -1,58 +1,37 @@
-// Desafio Amigo Secreto
+let amigos = [];
 
-//Incio Lista de amigos
-let nome = "";
-//criando a função de salavar
-function salvarNome(){
-    nome = document.getElementById("nome").value;
-    if(nome == ""){
-        alert("Por favor, preencha o campo nome");
-    }
-    else{
-        listaDeAmigos.push(nome);
-        document.getElementById("nome").value = "";
-        atualizarLista();
-    }
+function adicionarNome() {
+  let infoNome = document.getElementById("amigo");
+  let amigoNome = infoNome.value.trim();
+
+  if (!amigoNome) {
+    alert("Adicione um nome!");
+  } else {
+    amigos.push(amigoNome);
+    infoNome.value = "";
+    infoNome.focus();
+    atualizacaoLista();
+  }
 }
-//Criando lista vazia
-let listaDeAmigos = [];
-//Criando function para adicionar amigos
-function adicionarAmigo(){
-    let nome = document.getElementById("nome").value;
-    if(nome == ""){
-        alert("Por favor, preencha o campo nome");
-    }
-    else{
-        listaDeAmigos.push(nome);
-        document.getElementById("nome").value = "";
-        atualizarLista();
-    }
+
+function atualizacaoLista() {
+  let listaAmigo = document.getElementById("listaAmigo");
+  listaAmigo.innerHTML = "";
+
+  for (let i = 0; i < amigos.length; i++) {
+    let item = document.createElement("li");
+    item.textContent = amigos[i];
+    listaAmigo.appendChild(item);
+  }
 }
-//Atualizando lista de amigos
-function atualizarLista(){
-    let listaDeAmigos = document.getElementById("listaDeAmigos");
-    lista.innerHTML = "";
-    for(let i = 0; i < listaDeAmigos.length; i++){
-        lista.innerHTML += "<li>" + listaDeAmigos[i] + "</li>";
-    }
-}
-//Função sorterar amigo
-function sortearAmigo(){
-    if(lista.length ==0){
-        alert("Por favor, adicione amigos na lista");
-        return;
-    }
-    let indiceAleatorio = Math.floor(Math.random() * listaDeAmigos.length);
-    let amigoSorteado = listaDeAmigos[indiceAleatorio];
-    if(amigoSorteado == nome){
-        alert("Você tirou você mesmo, tente novamente");
-        return;
-    }
-    document.getElementById("amigo-sorteado").innerHTML = amigoSorteado;
-    //reiiniciar lista
-    function reiniciar(){
-        listaDeAmigos = [];
-        atualizarLista();
-        document.getElementById("amigo-sorteado").innerHTML = "";
-    }
+
+function sorteioNome() {
+  if (amigos.length < 2) {
+    alert("Por favor, adicione um nome.");
+    return;
+  } else {
+    let nomeSorteado = amigos[Math.floor(Math.random() * amigos.length)];
+    let resultado = document.getElementById("resultado");
+    resultado.textContent = `O seu amigo secreto é ${nomeSorteado}!`;
+  }
 }
